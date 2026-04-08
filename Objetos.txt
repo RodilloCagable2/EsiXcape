@@ -1,0 +1,5 @@
+OB01-Llave inglesa-Útil para reparar tuberías rotas-06
+OB02-Llave oxidada-Abre la gran cerradura final-10
+OB03-Tarjeta roja-Acceso a los pasillos restringidos-05
+OB04-Linterna UV-Revela tinta invisible en la pared-03
+OB05-Engranaje-Pieza vital de un mecanismo roto-07
