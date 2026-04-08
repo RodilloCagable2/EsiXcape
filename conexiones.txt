@@ -1,0 +1,11 @@
+C01-01-02-Activa-0
+C02-01-03-Activa-0
+C03-02-08-Bloqueada-P01
+C04-03-04-Bloqueada-P03
+C05-04-05-Activa-0
+C06-04-06-Bloqueada-P04
+C07-06-07-Bloqueada-OB03
+C08-07-09-Bloqueada-OB01
+C09-09-10-Bloqueada-P08
+C10-10-11-Bloqueada-OB02
+C11-08-11-Bloqueada-P07

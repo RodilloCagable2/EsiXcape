@@ -1,20 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAXEST 20
-#define MAXCON 3
-typedef struct{
-    char id_conexion[MAXCON];
-    int id_origen;
-    int id_destino;
-    char estado [MAXEST];
-    int condicion;
-}conexion_str;
-typedef struct{
-    //vector a conexiones para poder hacerle malloc y realloc las veces que haga falta.
-    conexion_str *conexvec;
-    int conexreg;
-}vector_conex;
+#include "conexiones.h"
+#include "salas.h"
 int cargar_conex(vector_conex *conex){
     FILE *f_conex;
     char *token;
@@ -27,7 +15,7 @@ int cargar_conex(vector_conex *conex){
     }
     //hacemos malloc para poder ir metiendo los datos que haya que meter.
     conex->conexvec=(conexion_str*)malloc(1*sizeof(conexion_str));
-    while(fgets(conex,50000,f_conex)!=NULL){
+    while(fgets(conex,sizeof(cadena),f_conex)!=NULL){
         conex->conexvec=(conexion_str *)realloc(conex->conexvec,(conex->conexreg+1)*sizeof(conexion_str));
         //Para la conexion que son caracteres.
         token=strtok(cadena,"-");
