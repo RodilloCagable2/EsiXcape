@@ -1,7 +1,10 @@
 #ifndef CONEXIONES_H
 #define CONEXIONES_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #define MAXEST 20
-#define MAXCON 3
+#define MAXCON 4
 typedef struct{
     char id_conexion[MAXCON];
     int id_origen;
