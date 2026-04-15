@@ -76,68 +76,73 @@ int describir_salas(vector_sala sala, int id_sala){
 }
 //id actual de la sala
 int entrar_otra_sala(vector_conex *conex, vector_sala *sala, int *salactual){
-    int i,j=0;
+    int i, j;
     int x;
-    int existe=0;
+    int existe = 0;
     char *nombre_dest;
+    int sala_objetivo; // NUEVO: Variable para saber a qué extremo de la conexión vamos
+
     printf("\nA partir de aqui podemos ir a las siguientes salas:\n");
-    for (i=0;i<conex->conexreg;i++){
-        if(*salactual == conex->conexvec[i].id_origen){
-            // busco el nombre de la sala destino en el vector de salas
-            nombre_dest = "Desconocida";
+    
+    // Bucle para mostrar las opciones disponibles
+    for (i = 0; i < conex->conexreg; i++){
+        // ¿Estamos en el origen o estamos en el destino de esta conexión?
+        if(*salactual == conex->conexvec[i].id_origen || *salactual == conex->conexvec[i].id_destino){
+            
+            if (*salactual == conex->conexvec[i].id_origen) {
+                sala_objetivo = conex->conexvec[i].id_destino; // Vamos hacia adelante
+            } else {
+                sala_objetivo = conex->conexvec[i].id_origen;  // Vamos hacia atrás
+            }
+
+            // Buscamos el nombre de la sala_objetivo
+            nombre_dest = "Desconocida"; 
             for(j = 0; j < sala->numreg; j++) {
-                if(sala->vctr_sala[j].id_sala == conex->conexvec[i].id_destino) {
+                if(sala->vctr_sala[j].id_sala == sala_objetivo) {
                     nombre_dest = sala->vctr_sala[j].nombr_sala;
                     break;
                 }
             }
+
             printf(" -> Sala %d (%s) [%s]\n", 
-                conex->conexvec[i].id_destino,nombre_dest,conex->conexvec[i].estado);
+                sala_objetivo, 
+                nombre_dest,
+                conex->conexvec[i].estado);
         }
     }
+
     do{
-        printf("\nescribe el numero de las sala a la que quiere viajar correspondientes: ");
+        printf("\nEscribe el numero de la sala a la que quieres viajar: ");
+        
         if (scanf("%d", &x) != 1) { 
             while(getchar() != '\n'); 
             printf("Entrada no valida. Escribe un numero.\n");
             continue;
         }
+
         for (i = 0; i < conex->conexreg; i++) {
-            if (*salactual == conex->conexvec[i].id_origen && x == conex->conexvec[i].id_destino) {
-                existe = 1;
+            // Caso A: Viaje de ida (Actual == Origen y X == Destino)
+            // Caso B: Viaje de vuelta (Actual == Destino y X == Origen)
+            if ((*salactual == conex->conexvec[i].id_origen && x == conex->conexvec[i].id_destino) ||
+                (*salactual == conex->conexvec[i].id_destino && x == conex->conexvec[i].id_origen)) {
                 
-                // Comprobar si está "Activa". strcmp devuelve 0 si son iguales.
+                existe = 1; 
+                
                 if (strcmp(conex->conexvec[i].estado, "Activa") == 0) {
                     *salactual = x;
                     printf("Viajando a la sala %d...\n", *salactual);
                 } else {
-                    // Si está bloqueada,le avisamos y no cambiamos el *salactual
-                    printf("\nLa conexión está %s. Tienes que resolver un acertijo o usar un objeto.\n", conex->conexvec[i].estado);
+                    printf("\nLa conexion esta %s. Tienes que resolver un acertijo o usar un objeto.\n", 
+                           conex->conexvec[i].estado);
                 }
-                break; // Salimos del for de comprobación porque ya encontramos la conexión
+                break; 
             }
         }
+
         if (existe == 0) {
-            printf("\nOpción incorrecta. No hay conexión a esa sala desde aquí.\n");
+            printf("\nOpcion incorrecta. No hay conexion a esa sala desde aqui.\n");
         }
-    }while(existe==0);
+    } while(existe == 0);
+    
     return 1;
 }
-    /*for (k<0;k<=j;k++){
-        if (scanf());
-    }*/
-    /*if (strcmp("Activa",conex->conexvec[*idactual-1].estado)){
-        *idactual=conex->conexvec[*idactual].id_destino;
-        return 1;
-    }else{
-        printf("necesitas resolver un puzzle para resolver esta sala.");
-        return 1;
-    }*/
-      /*while(k<=j){
-            if (x==guarda_sala[k] && strcmp("Activa",conex->conexvec[k].estado)){
-                *salactual=x;
-                existe=1;
-            }else if (!strcmp("Activa",conex->conexvec[k].estado)){
-                printf("\ntienes que resolver el acertijo u usar un objeto.");
-            }
-            k++;*/

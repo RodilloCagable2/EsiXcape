@@ -48,12 +48,19 @@ int cargar_conex(vector_conex *conex){
         
         //el ultimo dato será un salto de linea
         // hay que usar NULL, si uso "cadena" la lectura se reiniciará.
-        token=strtok(NULL,"\n");
+        token=strtok(NULL,"-");
         if (token!=NULL){
             // ajustado a MAXEST y asignado al atributo correcto ('estado', no 'id_conexion')
             strncpy(conex->conexvec[conex->conexreg].estado,token,MAXEST - 1);
             //aseguramos terminador nulo
             conex->conexvec[conex->conexreg].estado[MAXEST - 1] = '\0';
+        }
+        token=strtok(NULL,"\n");
+        if (token != NULL){
+            // Copiamos el texto de la condición (ej: "0", "P01", "OB03")
+            strncpy(conex->conexvec[conex->conexreg].condicion, token, MAXC - 1);
+            // Aseguramos el terminador nulo
+            conex->conexvec[conex->conexreg].condicion[MAXC- 1] = '\0';
         }
         conex->conexreg++;
     }
@@ -61,12 +68,3 @@ int cargar_conex(vector_conex *conex){
     //si ha salido todo bien devuelve 1.
     return 1;
 }
-//planteamiento si tenemos que guardar las cosas por separado.
-/*int guardar_salas(vector_conex *conex,jug_vect *jug){
-    FILE *f_partida;
-    f_partida=fopen("Partida.txt","w");
-    if (f_partida==NULL){
-        return 0; //error de carga
-    }
-
-}*/
