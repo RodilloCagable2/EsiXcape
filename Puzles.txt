@@ -1,0 +1,10 @@
+P01-Puzle panel-02-Codigo-Introduce el codigo en el panel de la pared-4500
+P02-Puzle cofres-05-Codigo-Introduce el orden de primos ascendentes de los cofres-2357
+P03-Puzle sombras-03-Palabra-Encuentra la palabra oculta en las sombras proyectadas-ANALISIS
+P04-Puzle reloj-04-Codigo-Ajusta el reloj a las 10:15 para desbloquear el compartimento secreto-1015
+P05-Puzle ruleta-06-Codigo-Gira la ruleta hasta encontrar el codigo correcto-4527
+P06-Puzle puertas-07-Palabra-Adivina la palabra secreta para abrir la puerta-LIBERTAD
+P07-Puzle espejo-08-Palabra-Reorganiza los espejos para reflejar la palabra correcta-ESPEJO
+P08-Puzle cerradura-09-Codigo-Introduce el codigo que aparece en el espejo al resolver el enigma-3784
+P09-Puzle sonido-10-Palabra-Descifra la secuencia de sonidos para encontrar la palabra clave-SILENCIO
+P10-Puzle mapa-01-Codigo-Descifra el codigo del mapa para revelar el lugar secreto-3091

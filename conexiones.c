@@ -68,3 +68,28 @@ int cargar_conex(vector_conex *conex){
     //si ha salido todo bien devuelve 1.
     return 1;
 }
+//planteamiento si tenemos que guardar las cosas por separado.
+/*int guardar_salas(vector_conex *conex,jug_vect *jug){
+    FILE *f_partida;
+    f_partida=fopen("Partida.txt","w");
+    if (f_partida==NULL){
+        return 0; //error de carga
+    }
+
+}*/
+
+void escribir_conexiones(vector_conex conex, int num_salas) {
+    printf("Conexiones:\n");
+    // Validar que los índices de origen y destino estén dentro del rango de salas
+    if (conex.conexvec[num_salas].id_origen >= 0 && conex.conexvec[num_salas].id_origen < num_salas &&
+        conex.conexvec[num_salas].id_destino >= 0 && conex.conexvec[num_salas].id_destino < num_salas) {
+        printf("ID: %s | Origen: %d | Destino: %d | Estado: %s\n",
+                conex.conexvec[num_salas].id_conexion,
+                conex.conexvec[num_salas].id_origen,
+                conex.conexvec[num_salas].id_destino,
+                conex.conexvec[num_salas].estado);
+    } else {
+        printf("Conexión ID: %s tiene índices de origen o destino fuera de rango.\n",
+                conex.conexvec[num_salas].id_conexion);
+    }
+}

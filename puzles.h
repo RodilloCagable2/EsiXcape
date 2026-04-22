@@ -21,39 +21,31 @@ typedef struct{
     char tipo[max_tipo_puzle];
     char descripcion[max_descripcion_puzle];
     char solucion[max_solucion_puzle];
-} puzle;
+}puzle;
 
-
-
-//cabecera: carga_puzles(puzle puzles[20])
 //precondición: Entra un array de puzles vacío.
 //postcondición: carga todos los datos en las estructuras/registros, desde el archivo de texto "puzles.txt".
-void cargar_puzles(puzle **p);
+void cargar_puzles(puzle **);
 
-//cabecera: mostrar_puzle(puzle puzles[20], char* id_puzle)
 //precondición: Entra un array de puzles y un id de un puzle existente.
 //postcondición: Imprime por pantalla el puzle a averiguar.
-void mostrar_puzle(puzle *p, int id_sala);
+void mostrar_puzle(puzle *, int);
 
-//cabecera mostrar_solucion_puzle(puzle puzle)
 //precondición: Entra el puzle.
 //postcondición: Imprime por pantalla la solución del puzle dado.
-void mostrar_solucion_puzle(puzle *p, int id_sala);
+void mostrar_solucion_puzle(puzle *, int);
 
-//cabecera: buscar_puzle(puzle *p, char* id_puzle);
 //precondición: Entra un array de puzles y un id de puzle.
 //postcondición: Devuelve el índice del puzle en el array o -1 si no se encuentra.
-int buscar_puzle(puzle *p, char* id_puzle);
+int buscar_puzle(puzle *, char *);
 
-//Cabecera: comprobar_solucion_puzle(puzle *p, char* id_puzle, char* respuesta);
 //Precondición: Entra un array de puzles, un id de puzle y una respuesta dada por el jugador.
 //Postcondición: Devuelve 1 si la respuesta es correcta, 0 si es incorrecta y -1 si el puzle no existe o la respuesta es inválida.
-int comprobar_solucion_puzle(puzle *p, char* id_puzle, char* respuesta);
+int comprobar_solucion_puzle(puzle *, char *, char *);
 
-//cabecera: limpiar_cadena(char *s);
 //precondición: Entra una cadena de caracteres.
 //postcondición: Elimina los caracteres \r y \n, reemplazándolos por el carácter nulo, para que funcione el strcmp.   
-void limpiar_cadena(char *s);
+void limpiar_cadena(char *);
 
 
 #endif

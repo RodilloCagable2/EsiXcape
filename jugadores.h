@@ -24,10 +24,10 @@ typedef struct {
 
 //PRECONDICIÓN: Ninguna
 //POSCONDICIÓN: Devuelve 0 si la carga de datos fue exitosa, 1 en caso de error. La estructura apuntada por j se actualiza con los datos cargados. 
-int cargar_jugadores(jug_vect *);
+void cargar_jugadores(jug_vect *);
 
 //PRECONDICIÓN: j debe ser un puntero válido
 //POSCONDICIÓN: Devuelve 0 si el guardado de datos fue exitoso, 1 en caso de error.
-int guardar_jugadores(jug_vect *);
+void guardar_jugadores(jug_vect *);
 
 #endif

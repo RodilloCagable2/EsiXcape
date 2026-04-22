@@ -1,7 +1,7 @@
 #include "objetos.h"
 
 //---> GESTIÓN DE MEMORIA: <---
-int cargar_objetos(obj_vect *o) {
+void cargar_objetos(obj_vect *o) {
 	FILE *f_obj;
 	char filename[] = "Objetos.txt";
 	char cad_linea[250];
@@ -40,13 +40,18 @@ int cargar_objetos(obj_vect *o) {
 			exit(1);
 		}
 		
-		campo_objetos = sscanf(cad_linea, "%5[^-]-%16[^-]-%51[^-]-%11[^-]",
+		if (cad_linea[0] == '\n' || cad_linea[0] == '\r') {
+			i--;
+			continue;
+		}
+		
+		campo_objetos = sscanf(cad_linea, "%5[^-]-%16[^-]-%51[^-]-%11[^\r\n]",
 			o->obj[i].Id_obj,
 			o->obj[i].Nomb_obj,
 			o->obj[i].Describ,
 			o->obj[i].Localiz);
 		
-		if (campo_objetos != 5) {
+		if (campo_objetos != 4) {
 			printf("Error en los datos del objeto %d\n", i + 1);
 			fclose(f_obj);
 			exit(1);
@@ -54,10 +59,9 @@ int cargar_objetos(obj_vect *o) {
 	}
 	
 	fclose(f_obj);
-	return 0;
 }
 
-int guardar_objetos(obj_vect *o) {
+void guardar_objetos(obj_vect *o) {
 	FILE *f_obj;
 	char filename[] = "Objetos.txt";
 	int i;
@@ -81,5 +85,4 @@ int guardar_objetos(obj_vect *o) {
 	}
 	
 	fclose(f_obj);
-	return 0;
 }
