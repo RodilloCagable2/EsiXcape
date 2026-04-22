@@ -12,7 +12,7 @@ int cargar_salas (vector_sala *sala){
     char cadena[512];
     sala->numreg=0;
     sala->vctr_sala = NULL;
-    f_sala = fopen("salas.txt", "r");
+    f_sala = fopen("Salas.txt", "r");
     if (f_sala == NULL) {
         return 0; // Error al abrir el fichero
     }

@@ -12,7 +12,7 @@ int cargar_conex(vector_conex *conex){
     // Así el primer realloc se encarga de crear el espacio correctamente.
     conex->conexvec = NULL;
     
-    f_conex=fopen("conexiones.txt","r");
+    f_conex=fopen("Conexiones.txt","r");
     //error al abrir el archivo.
     if (f_conex==NULL){
         return 0;

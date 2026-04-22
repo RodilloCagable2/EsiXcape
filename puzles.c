@@ -1,7 +1,7 @@
 #include "puzles.h"
 
 void cargar_puzles(puzle **p){
-    FILE *f = fopen("puzles.txt", "r");
+    FILE *f = fopen("Puzles.txt", "r");
     char linea[256];
     int i = 0;
 
